@@ -1,5 +1,8 @@
 from webscrapers import Sel_Scraper
 import sys
+import requests
+from bs4 import BeautifulSoup
+
 
 
 def runner():
@@ -16,4 +19,7 @@ def runner():
 
 
 if __name__ == "__main__":
-    runner()
+    runner()  
+    
+  
+    

@@ -19,6 +19,7 @@ class Sel_Scraper():
         self.driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
         self.page_content= None
         self.soup= None
+        self.article= None
 
     
     def dynamic_search_url(self):
@@ -27,11 +28,29 @@ class Sel_Scraper():
         # time.sleep(6) 
         self.page_content = self.driver.page_source
 
-        soup = BeautifulSoup(page_content, 'html.parser')
+        self.soup = BeautifulSoup(self.page_content, 'html.parser')
 
-        print(soup)
+        # Find the first article with the specified class
+        self.article = self.soup.find('div', class_='article__content')
 
+        if self.article:
+            print(self.article.get_text())  # Print the text content of the article
+        else:
+            print("Article not found.")
         self.driver.close()
+
+
+
+    #url = 'https://edition.cnn.com/travel/article/scenic-airport-landings-2020/index.html'
+    #response = requests.get(url)
+
+    #print(url)
+    # Check if the request was successful
+    #if response.status_code == 200:
+     #   print(response.status_code)
+      #  html_content = response.text
+       # print(html_content)
+
 
 
         

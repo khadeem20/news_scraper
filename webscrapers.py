@@ -49,6 +49,7 @@ class Sel_Scraper():
     #if response.status_code == 200:
      #   print(response.status_code)
       #  html_content = response.text
+        #html_content.find('div', class_='article__content')
        # print(html_content)
 
 

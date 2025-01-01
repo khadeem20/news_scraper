@@ -8,6 +8,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 from bs4 import BeautifulSoup
+from docx import Document
 
 import time
 
@@ -19,7 +20,9 @@ class Sel_Scraper():
         self.driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
         self.page_content= None
         self.soup= None
+        self.title=None
         self.article= None
+        self.doc= None
 
     
     def dynamic_search_url(self):
@@ -30,13 +33,29 @@ class Sel_Scraper():
 
         self.soup = BeautifulSoup(self.page_content, 'html.parser')
 
-        # Find the first article with the specified class
-        self.article = self.soup.find('div', class_='article__content')
+        #find the title
+        self.title= self.soup.find('h1', id="maincontent").get_text()
 
-        if self.article:
-            print(self.article.get_text())  # Print the text content of the article
-        else:
+
+        # Find the first article with the specified class
+        self.article = self.soup.find('div', class_='article__content').get_text()
+
+        if not self.article and self.title:
+            #print(self.title)
+            #print(self.article)  # Print the text content of the article
+       # else:
             print("Article not found.")
+
+    def create_doc(self):
+        self.doc= Document()
+
+        self.doc.add_heading(self.title, level=1)
+
+        self.doc.add_paragraph(self.article)
+
+        self.doc.save('article.docx')
+
+    def finito(self):
         self.driver.close()
 
 

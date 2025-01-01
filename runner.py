@@ -11,8 +11,10 @@ def runner():
         url = sys.argv[1]
         scraper= Sel_Scraper(url)
         scraper.dynamic_search_url()
+        scraper.create_doc()
+        scraper.finito()
     else:
-        print("NO INPUT RECIEVED!!")
+        print("NO URL ENTERED!!")
 
      
 

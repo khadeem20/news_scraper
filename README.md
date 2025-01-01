@@ -1,17 +1,19 @@
 # news_scraper
-A python web scraper app to return information form a news article.
+A python web scraper application that navigates to given a url which links to a news article, take the 
+articles content and creates a word doc containing that information.
 
 Libraries used:
 
 -Selenium
 -Beatiful Soap
-
---How it works--
-
-The application uses object-oriented principle as opposed to modules. 
-Firstly install the libraries imported in the runner.py file. (Sorry no requirements.txt this time).
-Enter python runner.py https://edition.cnn.com/travel/article/scenic-airport-landings-2020/index.html in the cmd
+-docx
 
 
+--First--
+pip install -r requirements.txt
+
+--To Run--
+In the terminal enter
+python runner.py https://edition.cnn.com/travel/article/scenic-airport-landings-2020/index.html 
 
 
